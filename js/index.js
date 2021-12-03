@@ -14,9 +14,3 @@ for(let recetaCantidad of recetaPan){
 /* buscar el elemento "Masa madre" */
 const resultado = recetaPan.find( ingredientes => ingredientes.ingrediente === "masa Madre" );
 console.log(resultado);
-/* function laM(masa) {
-    return masa.ingrediente === 'Masa Madre';
-}
-
-
-console.log( recetaPan.find(laM)); */
