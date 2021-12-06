@@ -12,16 +12,11 @@ let cantidadComensal = parseInt(prompt("ingre la cantidad de comensales"));
 
 let total = recetaPan.map(ingrediente => ingrediente.cantidad * cantidadComensal);
 
-function mostrarIngredientes(receta) {
-    receta.forEach(ingrediente => {
-        alert(`${ingrediente.ingrediente} ${total} ${ingrediente.unidad}`);
-    });
+for (let i = 0; i < total.length; i++) {
+    alert(recetaPan[i].ingrediente + " " + total[i] + " " + recetaPan[i].unidad);
 }
-mostrarIngredientes(recetaPan);
+
 
 /* buscar el elemento "Masa madre" */
 const resultado = recetaPan.find(ingredientes => ingredientes.ingrediente === "masa Madre");
 console.log(resultado);
-
-
-
