@@ -16,7 +16,6 @@ for (let i = 0; i < total.length; i++) {
     alert(recetaPan[i].ingrediente + " " + total[i] + " " + recetaPan[i].unidad);
 }
 
-
-/* buscar el elemento "Masa madre" */
-const resultado = recetaPan.find(ingredientes => ingredientes.ingrediente === "masa Madre");
-console.log(resultado);
+/* ordenar por orden alfabetico de ingredientes */
+let ordenar = recetaPan.sort((a, b) => a.ingrediente.localeCompare(b.ingrediente));
+console.log(ordenar);
