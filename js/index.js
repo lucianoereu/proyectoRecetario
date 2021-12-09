@@ -15,6 +15,12 @@ let total = recetaPan.map(ingrediente => ingrediente.cantidad * cantidadComensal
 for (let i = 0; i < total.length; i++) {
     alert(recetaPan[i].ingrediente + " " + total[i] + " " + recetaPan[i].unidad);
 }
+/* imprimir en documento por getElementById */
+let cambio = document.getElementById("panMM");
+
+console.log(
+    cambio.innerHTML = recetaPan[0].ingrediente + " " + total[0] + " " + recetaPan[0].unidad + "<br>" + recetaPan[1].ingrediente + " " + total[1] + " " + recetaPan[1].unidad + "<br>" + recetaPan[2].ingrediente + " " + total[2] + " " + recetaPan[2].unidad + "<br>" + recetaPan[3].ingrediente + " " + total[3] + " " + recetaPan[3].unidad
+)
 
 /* ordenar por orden alfabetico de ingredientes */
 let ordenar = recetaPan.sort((a, b) => a.ingrediente.localeCompare(b.ingrediente));
