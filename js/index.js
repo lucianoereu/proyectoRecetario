@@ -6,24 +6,18 @@ const recetaPan = [{ id: 1, ingrediente: "Harina", cantidad: 5, unidad: "gr" },
 ]
 
 /* ingreso de cantidad */
-let cantidadComensal = parseInt(prompt("ingre la cantidad de comensales"));
+let cantidadComensal = document.getElementById("cantidad");
 
-/* creo array para la cantidad de cada ingrediente segun la cantidad de comensales ingresada */
-let total = recetaPan.map(ingrediente => ingrediente.cantidad * cantidadComensal);
-
-/* realizo un ciclo for donde imprimo la cantidad de TOTAL  */
-/* for (let i = 0; i < total.length; i++) {
-    alert(recetaPan[i].ingrediente + " " + total[i] + " " + recetaPan[i].unidad);
-}
- */
 
 /* imprimir en documento por getElementById */
 let cambio = document.getElementById("panMM");
 
-console.log(
+cantidadComensal.addEventListener("keyup", () => {
+    /* creo array para la cantidad de cada ingrediente segun la cantidad de comensales ingresada */
+    let total = recetaPan.map(ingrediente => ingrediente.cantidad * cantidadComensal.value);
     cambio.innerHTML = recetaPan[0].ingrediente + " " + total[0] + " " + recetaPan[0].unidad + "<br>" + recetaPan[1].ingrediente + " " + total[1] + " " + recetaPan[1].unidad + "<br>" + recetaPan[2].ingrediente + " " + total[2] + " " + recetaPan[2].unidad + "<br>" + recetaPan[3].ingrediente + " " + total[3] + " " + recetaPan[3].unidad
-)
+})
 
-/* ordenar por orden alfabetico de ingredientes */
+/*         /* ordenar por orden alfabetico de ingredientes */
 let ordenar = recetaPan.sort((a, b) => a.ingrediente.localeCompare(b.ingrediente));
 console.log(ordenar);
