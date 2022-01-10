@@ -15,90 +15,101 @@
 </head>
 
 <body>
-    <header>
+    <header id="titulo">
         <h1>Recetario</h1>
     </header>
-    <div class="recetas">
-        <div class="recetas-item">
+
+    <div class="contenedor">
+
+        <div class="receta1">
             <h2>receta pan masa madre</h2>
             <ul id="panMM">
                 <li>harina
-                    <ul>
-                        <li>gr</li>
-                    </ul>
+
                 </li>
                 <li>agua
-                    <ul>
-                        <li>gr</li>
-                    </ul>
+
                 </li>
                 <li>masa madre
-                    <ul>
-                        <li>gr</li>
-                    </ul>
+
                 </li>
                 <li>sal
-                    <ul>
-                        <li>gr</li>
-                    </ul>
+
                 </li>
             </ul>
             <label for="cantidad">Cantidad de comensales</label>
             <input type="number" name="cantidad" id="cantidad">
-
-
+            <button id="btnPanMM">mostrar cantidad</button>
 
         </div>
-        <div class="recetas-item">
-            <h2>receta pan masa madre</h2>
-            <ul>
+        <div class="receta1">
+            <h2>Pizza</h2>
+            <ul id="pizza">
                 <li>harina
-                    <ul>
-                        <li>gr</li>
-                    </ul>
                 </li>
                 <li>agua
-                    <ul>
-                        <li>gr</li>
-                    </ul>
                 </li>
                 <li>masa madre
-                    <ul>
-                        <li>gr</li>
-                    </ul>
                 </li>
                 <li>sal
-                    <ul>
-                        <li>gr</li>
-                    </ul>
                 </li>
+                <li>aceite
+                </li>
+                <li>salsa
+                </li>
+                <li>queso</li>
             </ul>
+            <label for="cantidad">Cantidad de pizzas</label>
+            <input type="number" name="cantidad" id="cantidadPizza">
+            <button id="btnPizza">mostrar cantidad</button>
+
         </div>
-        <div class="recetas-item">
-            <h2>receta pan masa madre</h2>
-            <ul>
+        <div class="receta1">
+            <h2>Focaccia</h2>
+            <ul id="focaccia">
                 <li>harina
-                    <ul>
-                        <li>gr</li>
-                    </ul>
+
                 </li>
                 <li>agua
-                    <ul>
-                        <li>gr</li>
-                    </ul>
+
                 </li>
                 <li>masa madre
-                    <ul>
-                        <li>gr</li>
-                    </ul>
+
                 </li>
                 <li>sal
-                    <ul>
-                        <li>gr</li>
-                    </ul>
+                </li>
+                <li>aceite</li>
+            </ul>
+            <label for="cantidad">ingrese la cantidad</label>
+            <input type="number" name="cantidad" id="cantidadFocaccia">
+            <button id="btnFocaccia">mostrar cantidad</button>
+
+        </div>
+        <div class="receta1">
+            <h2>Arepa</h2>
+            <ul id="arepas">
+                <li>harina de maiz
+
+                </li>
+                <li>agua
+
+                </li>
+                <li>aceite
+
+                </li>
+                <li>sal
+
                 </li>
             </ul>
+            <label for="cantidad">Cantidad de arepas</label>
+            <input type="number" name="cantidad" id="cantidadArepa">
+            <button id="btnArepa">mostrar cantidad</button>
+
         </div>
+
+    </div>
+
+
     </div>
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
