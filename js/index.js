@@ -78,3 +78,22 @@ $("#cantidadArepa").on("keyup", function() {
 /*         /* ordenar por orden alfabetico de ingredientes */
 let ordenar = recetaPan.sort((a, b) => a.ingrediente.localeCompare(b.ingrediente));
 console.log(ordenar);
+
+
+/* ajax */
+
+document.querySelector("#mostrarReceta").addEventListener("click", function mostrarReceta() {
+    /* console.log("mostrar recetas"); */
+    const xhttp = new XMLHttpRequest();
+
+    xhttp.open("GET", "recetas/recetaMM.txt", true);
+    xhttp.send();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status === 200) {
+            document.getElementById("receta").innerHTML = this.responseText;
+        }
+
+    }
+
+})
