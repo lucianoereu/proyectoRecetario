@@ -12,39 +12,22 @@ $("#btnFocaccia").click(() => {
 $("#btnArepa").click(() => {
     $("#arepas").slideToggle();
 });
-/* constante */
-/* pan masa madre */
-const recetaPan = [{ id: 1, porcentaje: "90%", ingrediente: "Harina", cantidad: 47, unidad: "gr" },
-    { id: 2, porcentaje: "70%", ingrediente: "agua", cantidad: 36, unidad: "gr" },
-    { id: 3, porcentaje: "20%", ingrediente: "masa Madre", cantidad: 10, unidad: "gr" },
-    { id: 4, porcentaje: "2%", ingrediente: "sal", cantidad: 1, unidad: "gr" },
-];
-/* pizza */
-const recetaPizza = [{ id: 1, porcentaje: "80%", ingrediente: "Harina", cantidad: 47, unidad: "gr" },
-    { id: 2, porcentaje: "70%", ingrediente: "agua", cantidad: 36, unidad: "gr" },
-    { id: 3, porcentaje: "20%", ingrediente: "levadura", cantidad: 10, unidad: "gr" },
-    { id: 4, porcentaje: "2%", ingrediente: "sal", cantidad: 1, unidad: "gr" },
-    { id: 5, porcentaje: "2%", ingrediente: "aceite", cantidad: 1, unidad: "gr" },
-    { id: 6, porcentaje: "2%", ingrediente: "salsa", cantidad: 5, unidad: "gr" },
-    { id: 7, porcentaje: "2%", ingrediente: "queso", cantidad: 30, unidad: "gr" }
-];
-/* focaccia */
-const recetaFocaccia = [{ id: 1, porcentaje: "80%", ingrediente: "Harina", cantidad: 47, unidad: "gr" },
-    { id: 2, porcentaje: "70%", ingrediente: "agua", cantidad: 36, unidad: "gr" },
-    { id: 3, porcentaje: "20%", ingrediente: "levadura", cantidad: 10, unidad: "gr" },
-    { id: 4, porcentaje: "2%", ingrediente: "sal", cantidad: 1, unidad: "gr" },
-    { id: 5, porcentaje: "2%", ingrediente: "aceite", cantidad: 1, unidad: "gr" },
-];
-/* arepas */
-const recetaArepas = [{ id: 1, porcentaje: "80%", ingrediente: "Harina de maiz", cantidad: 20, unidad: "gr" },
-    { id: 2, porcentaje: "70%", ingrediente: "agua", cantidad: 35, unidad: "gr" },
-    { id: 3, porcentaje: "20%", ingrediente: "aceite", cantidad: 1, unidad: "gr" },
-    { id: 4, porcentaje: "2%", ingrediente: "sal", cantidad: 1, unidad: "gr" },
-];
+/* llamada dinamica */
+let ingredientesJson = "";
+
+/* llamada dianmica del json */
+
+$.ajax({
+    url: "js/ingredientes.json",
+    dataType: "json",
+    success: (respuesta) => {
+        ingredientesJson = respuesta;
+    },
+});
 
 
 /* ingreso de cantidad */
-let cantidadComensal = document.getElementById("cantidad");
+let cantidadMasaMadre = document.getElementById("cantidadMasaMadre");
 let cantidadPizza = document.getElementById("cantidadPizza");
 let cantidadFocaccia = document.getElementById("cantidadFocaccia");
 let cantidadArepas = document.getElementById("cantidadArepa");
@@ -54,30 +37,41 @@ let cambio = document.getElementById("panMM");
 let cambio2 = document.getElementById("pizza");
 let cambio3 = document.getElementById("focaccia");
 let cambio4 = document.getElementById("arepas");
+
+
 /* usando jquery */
+
+
 /* calcular y mostrr pan de masa madre */
-$("#cantidad").on("keyup", function() {
-    let total = recetaPan.map(ingrediente => ingrediente.cantidad * cantidadComensal.value);
-    cambio.innerHTML = recetaPan[0].ingrediente + " " + total[0] + " " + recetaPan[0].unidad + "<br>" + recetaPan[1].ingrediente + " " + total[1] + " " + recetaPan[1].unidad + "<br>" + recetaPan[2].ingrediente + " " + total[2] + " " + recetaPan[2].unidad + "<br>" + recetaPan[3].ingrediente + " " + total[3] + " " + recetaPan[3].unidad
-});
+$("#cantidadMasaMadre").on("keyup", function() {
+    let panMasaMadre = ingredientesJson.ingredientesMM;
+    let total = panMasaMadre.map(ingrediente => ingrediente.cantidad * cantidadMasaMadre.value);
+    cambio.innerHTML = panMasaMadre[0].ingrediente + " " + total[0] + " " + panMasaMadre[0].unidad + "<br>" + panMasaMadre[1].ingrediente + " " + total[1] + " " + panMasaMadre[1].unidad + "<br>" + panMasaMadre[2].ingrediente + " " + total[2] + " " + panMasaMadre[2].unidad + "<br>" + panMasaMadre[3].ingrediente + " " + total[3] + " " + panMasaMadre[3].unidad;
+})
+
 /* calcular y mostrar pizza */
 $("#cantidadPizza").on("keyup", function() {
-    let total = recetaPizza.map(ingrediente => ingrediente.cantidad * cantidadPizza.value);
-    cambio2.innerHTML = recetaPizza[0].ingrediente + " " + total[0] + " " + recetaPizza[0].unidad + "<br>" + recetaPizza[1].ingrediente + " " + total[1] + " " + recetaPizza[1].unidad + "<br>" + recetaPizza[2].ingrediente + " " + total[2] + " " + recetaPizza[2].unidad + "<br>" + recetaPizza[3].ingrediente + " " + total[3] + " " + recetaPizza[3].unidad + "<br>" + recetaPizza[4].ingrediente + " " + total[4] + " " + recetaPizza[4].unidad + "<br>" + recetaPizza[5].ingrediente + " " + total[5] + " " + recetaPizza[5].unidad + "<br>" + recetaPizza[6].ingrediente + " " + total[6] + " " + recetaPizza[6].unidad
+    let pizza = ingredientesJson.ingredientesPizza;
+    let total = pizza.map(ingrediente => ingrediente.cantidad * cantidadPizza.value);
+    cambio2.innerHTML = pizza[0].ingrediente + " " + total[0] + " " + pizza[0].unidad + "<br>" + pizza[1].ingrediente + " " + total[1] + " " + pizza[1].unidad + "<br>" + pizza[2].ingrediente + " " + total[2] + " " + pizza[2].unidad + "<br>" + pizza[3].ingrediente + " " + total[3] + " " + pizza[3].unidad + "<br>" + pizza[4].ingrediente + " " + total[4] + " " + pizza[4].unidad + "<br>" + pizza[5].ingrediente + " " + total[5] + " " + pizza[5].unidad
 });
+
 /* calcular y mostrar focaccia */
 $("#cantidadFocaccia").on("keyup", function() {
-    let total = recetaFocaccia.map(ingrediente => ingrediente.cantidad * cantidadFocaccia.value);
-    cambio3.innerHTML = recetaFocaccia[0].ingrediente + " " + total[0] + " " + recetaFocaccia[0].unidad + "<br>" + recetaFocaccia[1].ingrediente + " " + total[1] + " " + recetaFocaccia[1].unidad + "<br>" + recetaFocaccia[2].ingrediente + " " + total[2] + " " + recetaFocaccia[2].unidad + "<br>" + recetaFocaccia[3].ingrediente + " " + total[3] + " " + recetaFocaccia[3].unidad + "<br>" + recetaFocaccia[4].ingrediente + " " + total[4] + " " + recetaFocaccia[4].unidad
+    let focaccia = ingredientesJson.ingredientesFocaccia;
+    let total = focaccia.map(ingrediente => ingrediente.cantidad * cantidadFocaccia.value);
+    cambio3.innerHTML = focaccia[0].ingrediente + " " + total[0] + " " + focaccia[0].unidad + "<br>" + focaccia[1].ingrediente + " " + total[1] + " " + focaccia[1].unidad + "<br>" + focaccia[2].ingrediente + " " + total[2] + " " + focaccia[2].unidad + "<br>" + focaccia[3].ingrediente + " " + total[3] + " " + focaccia[3].unidad + "<br>" + focaccia[4].ingrediente + " " + total[4] + " " + focaccia[4].unidad
+
 });
+
 /* calcular y mostrar arepas */
 $("#cantidadArepa").on("keyup", function() {
-    let total = recetaArepas.map(ingrediente => ingrediente.cantidad * cantidadArepas.value);
-    cambio4.innerHTML = recetaArepas[0].ingrediente + " " + total[0] + " " + recetaArepas[0].unidad + "<br>" + recetaArepas[1].ingrediente + " " + total[1] + " " + recetaArepas[1].unidad + "<br>" + recetaArepas[2].ingrediente + " " + total[2] + " " + recetaArepas[2].unidad + "<br>" + recetaArepas[3].ingrediente + " " + total[3] + " " + recetaArepas[3].unidad
+    let arepas = ingredientesJson.ingredientesArepas;
+    let total = arepas.map(ingrediente => ingrediente.cantidad * cantidadArepas.value);
+    cambio4.innerHTML = arepas[0].ingrediente + " " + total[0] + " " + arepas[0].unidad + "<br>" + arepas[1].ingrediente + " " + total[1] + " " + arepas[1].unidad + "<br>" + arepas[2].ingrediente + " " + total[2] + " " + arepas[2].unidad + "<br>" + arepas[3].ingrediente + " " + total[3] + " " + arepas[3].unidad
 });
-/*         /* ordenar por orden alfabetico de ingredientes */
-let ordenar = recetaPan.sort((a, b) => a.ingrediente.localeCompare(b.ingrediente));
-console.log(ordenar);
+
+
 
 
 /* ajax */
@@ -85,7 +79,6 @@ console.log(ordenar);
 document.querySelector("#mostrarReceta").addEventListener("click", function mostrarReceta() {
     /* console.log("mostrar recetas"); */
     const xhttp = new XMLHttpRequest();
-
     xhttp.open("GET", "recetas/recetaMM.txt", true);
     xhttp.send();
 
@@ -93,7 +86,5 @@ document.querySelector("#mostrarReceta").addEventListener("click", function most
         if (this.readyState == 4 && this.status === 200) {
             document.getElementById("receta").innerHTML = this.responseText;
         }
-
     }
-
 })
