@@ -1,6 +1,6 @@
 # proyectoRecetario
 
-## curso JavaScrip
+## curso JavaScrip, CoderHouse
 
 ## Profesor 
 Jose Nardulli.
