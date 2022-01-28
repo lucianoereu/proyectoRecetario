@@ -132,7 +132,7 @@ function mostrarRecetaFocaccia() {
 
 
 /* cargamos ingredientes */
-let nuevasRecetas = [{}];
+let nuevasRecetas = {};
 /* crear funcion que agrega al json */
 const addJsonElement = jsonNuevo=> {
    nuevasRecetas.push(jsonNuevo,);
