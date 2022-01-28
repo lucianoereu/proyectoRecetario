@@ -6,10 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- fontaweson -->
+    <script src="https://kit.fontawesome.com/8e3afbb123.js" crossorigin="anonymous"></script>
     <!-- mi js -->
     <script defer src="./js/index.js"></script>
     <!--mi css  -->
     <link rel="stylesheet" href="./css/estilo.css">
+    <!-- bulma -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- tipo de letra -->
@@ -42,7 +46,7 @@
                 </li>
             </ul>
             <div class="botonera">
-                <button id="btnPanMM" class="btn btn-outline-secondary">ingredientes</button>
+                <button id="btnPanMM" class="btn btn-outline-secondary">ingredeintes</button>
                 <label for="cantidad" clas="cantidadDe">Cantidad de panes</label>
                 <input type="number" name="cantidad" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" id="cantidadMasaMadre">
                 <button class="mostrarReceta btn btn-outline-success" id="mostrarRecetaMM">Mostrar receta</button>
@@ -123,7 +127,58 @@
         </div>
 
     </div>
+<!-- agrega nuevas recetas -->
+    <div id="jsonDiv">
 
+    </div>
+    <div id="contenedor w-25 p-3">
+
+        <h2 class="title has-text-centered w-25 p-3">agregar recetas</h2>
+        <form action="" class="w-25 p-3" id="form">
+            <div class="field ">
+                <label class="label">Nombre Receta</label>
+                <div class="control">
+                  <input name="nombreReceta" class="input" type="text" placeholder="ej:pan de salvado" id="nuevoNombre">
+                </div>
+    <!-- formulario para agregar ingredientes -->
+        <div class="field ">
+            <label class="label">Ingrediente</label>
+            <div class="control">
+              <input name="ingrediente" class="input" type="text" placeholder="ej:azucar" id="nuevoIngrediente">
+            </div>
+            <div class="field">
+                <label class="label">cantidad en gramos</label>
+                <div class="control">
+                  <input class="input" name="cantidad" type="number" id="nuevaCantidad" placeholder="ej:20">
+                </div>
+              </div>
+          </div>
+          <div class="sumarIngrediente">
+            <p class="buttons">
+                <button type="button" id="sumar" class="button is-small is-light">
+                  <span class="icon is-small">
+                    <i class="fas fa-plus"></i>
+                    
+                  </span>
+                </button>
+              </p>
+          </div>
+          <!-- sumando ingredeintes -->
+          <div class="container" id="divElemnt">
+        
+        </div>
+          <div class="field">
+            <label class="label">procedimiento</label>
+            <div class="control">
+              <textarea id="nuevoProceso" class="textarea" placeholder="Mezclamos los ingredeintes..."></textarea>
+            </div>
+          </div>
+          
+          <div class="control">
+            <button id="guardar" type="button" class="button is-primary">Guardar</button>
+          </div>
+        </form>
+    </div>
 
     </div>
     <footer>
