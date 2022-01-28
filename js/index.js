@@ -1,3 +1,4 @@
+
 /* animaciones */
 $("#panMM, #pizza, #focaccia, #arepas").hide("fast");
 
@@ -74,14 +75,7 @@ $("#cantidadArepa").on("keyup", function() {
 });
 
 
-/* let receta = "";
-$.ajax({
-    url: "recetas/recetas.json",
-    dataType: "text",
-    success: (respuesta) => {
-        receta = respuesta;
-    },
-}); */
+
 
 /* ajax */
 /* traemos receta pan masa madre */
@@ -135,3 +129,87 @@ function mostrarRecetaFocaccia() {
     }
     $("#recetaFocaccia").slideToggle();
 }
+
+
+/* cargamos ingredientes */
+let nuevasRecetas = [{}];
+/* crear funcion que agrega al json */
+const addJsonElement = jsonNuevo=> {
+   nuevasRecetas.push(jsonNuevo,);
+   return nuevasRecetas.length - 1;
+   console.log(jsonNuevo)
+}
+
+(
+    
+
+    function load(){
+    const $form = document.getElementById("form");
+    const $divelemntos = document.getElementById("divElemnt");
+    const $botonguardar = document.getElementById("guardar");
+    const $botonsumar = document.getElementById("sumar");
+
+    const templateElemento = (data, position) => {
+        return (`
+        <button class="delete" onclick="removeElement(event, ${position})"></button>
+        <p>${data}gr</p>
+      `);
+    }
+
+    $botonsumar.addEventListener("click", (event) => {
+        if( $form.ingrediente.value !="" && $form.cantidad.value !=""){
+        let ingresar = addJsonElement({
+            ingrediente: $form.ingrediente.value,
+            cantidad: $form.cantidad.value
+        });
+        const $div = document.createElement("div");
+        $div.classList.add("notification", "is-primary","is-light")
+        $divelemntos.appendChild($div);
+        $div.innerHTML = templateElemento(`${$form.ingrediente.value} ${$form.cantidad.value}`, ingresar);
+
+        $form.reset()
+        }else{
+            alert("ingrese ingrediente y cantidad");
+        }})
+
+/* funcion borrar ingredientes */
+function removeElement(event,position){
+    event.target.parentElement.remove()
+    delete nuevasRecetas[position]
+}
+
+/* guardar receta */
+$botonguardar.addEventListener("click", (event) => {
+    nuevasRecetas = nuevasRecetas.filter(nuevaReceta => nuevaReceta !== undefined);
+     /* crear json  */
+     guardarLocalStorage(nuevasRecetas)
+     nuevasRecetas = [];
+     getReceta();
+        
+     /* imprimir json */
+     const $jsonDiv = document.getElementById("jsonDiv");
+     jsonDiv.innerHTML =`JSON: ${JSON.stringify(nuevasRecetas)}`;
+     $divelemntos.innerHTML = "";
+});
+/* guardar receta en el local storage */
+
+function guardarLocalStorage(nuevasRecetas){
+    let receta = JSON.stringify(nuevasRecetas);
+    localStorage.setItem("receta", receta);
+}
+
+function getReceta(){
+    let receta = localStorage.getItem("receta");
+    if (receta == null){
+    return [];
+    } else {
+        nuevasRecetas = JSON.parse(receta);
+    }
+    return nuevasRecetas;
+    console.log(nuevasRecetas);
+    getReceta();
+    console.log(receta)
+};
+getReceta();
+})();
+
